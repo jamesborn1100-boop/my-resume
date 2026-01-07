@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XAIYAVANH - Resume</title>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            position: relative;
+            cursor: default;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        /* --- ເພີ່ມ Effect ໃຫ້ທຸກຕົວໜັງສື --- */
+        p, li, span, div, h1 {
+            transition: all 0.3s ease; /* ໃຫ້ແສງຄ່ອຍໆແຈ້ງຂຶ້ນ */
+        }
+
+        /* ເວລາ Hover ໃຫ້ມີແສງ Glow */
+        p:hover, li:hover, span:hover, .summary-box div:hover {
+            color: #ffffff;
+            text-shadow: 0 0 8px rgba(247, 147, 26, 0.8);
+            transform: translateX(5px); /* ຍັບໄປທາງຂວານິດໜຶ່ງໃຫ້ເບິ່ງມີມິຕິ */
+        }
+
+        .header {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 220px;
+            object-fit: cover;
+            border: 1px solid #333;
+            transition: 0.5s;
+        }
+
+        .profile-img:hover {
+            border-color: #f7931a;
+            box-shadow: 0 0 20px rgba(247, 147, 26, 0.4);
+        }
+
+        .summary-box {
+            color: #cccccc;
+            font-family: monospace;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin: 0 0 15px 0;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(247, 147, 26, 0.8);
+            position: relative;
+            display: inline-block;
+        }
+
+        /* ໂຕ Mouse Cursor ທຽມ */
+        h1::after {
+            content: ''; 
+            position: absolute;
+            bottom: -10px; 
+            right: 40px; 
+            width: 25px; 
+            height: 25px;
+            background-image: url('https://www.pngmart.com/files/3/Cursor-Arrow-PNG-Transparent-Image.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(247, 147, 26, 1));
+            pointer-events: none;
+            z-index: 10;
+            animation: mouseBounce 2s infinite;
+        }
+
+        @keyframes mouseBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .section-title {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        /* ເຮັດໃຫ້ Section Title ເດັ່ນຂຶ້ນເວລາ Hover */
+        .section-title:hover {
+            color: #f7931a;
+            border-bottom: 1px solid #f7931a;
+            padding-left: 10px;
+            text-shadow: 0 0 15px rgba(247, 147, 26, 0.6);
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .info-row {
+            display: flex;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .info-label {
+            width: 140px;
+            color: #888;
+        }
+
+        .info-value {
+            color: #eee;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin: 5px 0;
+        }
+
+        li {
+            color: #bbb;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            color: #bbb;
+            font-size: 14px;
+        }
+
+        .profile-grid div {
+            padding: 5px;
+            border: 1px solid transparent;
+        }
+
+        .profile-grid div:hover {
+            background: rgba(247, 147, 26, 0.1);
+            border: 1px solid #f7931a;
+            color: #fff;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <img src="https://media-bkk1-1.cdn.whatsapp.net/v/t61.24694-24/509179534_1445069339955608_1672076963970717411_n.jpg?ccb=11-4&oh=01_Q5Aa3gG5sfJUPXPUCs8heL0ZQPnBK39LtuXXLqgCwd9aZqpeyQ&oe=6969C278&_nc_sid=5e03e0&_nc_cat=107" alt="Profile" class="profile-img">
+        
+        <div class="header-text-container">
+            <h1>XAIYAVANH</h1>
+            <div class="summary-box">
+                <div>// &lt;summary&gt;</div>
+                <div>// Government Marketing Expert,</div>
+                <div>// Front-End Developer,</div>
+                <div>// Third-Cycle Bitcoin Investor,</div>
+                <div>// Technical White Paper Analyst,</div>
+                <div>// Entrepreneurship Scholar.</div>
+                <div>// Resourceful Self-Taught Learner.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-title">Personal Information</div>
+    <div style="margin-bottom: 30px;">
+        <div class="info-row"><span class="info-label">Role</span><span class="info-value">Bitcoiner | Front-end Developer | Strategic Researcher</span></div>
+        <div class="info-row"><span class="info-label">Email</span><span class="info-value">jamesBorn1100@gmail.com</span></div>
+        <div class="info-row"><span class="info-label">Phone</span><span class="info-value">+856 20 5608 4393</span></div>
+        <div class="info-row"><span class="info-label">Location</span><span class="info-value">"Private"</span></div>
+        <div class="info-row"><span class="info-label">Age</span><span class="info-value">23</span></div>
+        <div class="info-row"><span class="info-label">Vehicle License</span><span class="info-value">true</span></div>
+    </div>
+
+    <div class="grid-container">
+        <div>
+            <div class="section-title">Education</div>
+            <p style="font-size: 14px; margin-bottom: 5px;">High School Diploma | Autonomous Learner</p>
+            <p style="font-size: 13px; color: #888;">Sisattanak High-School<br>2021</p>
+
+            <div class="section-title">Experience</div>
+            <p style="font-weight: bold; margin-bottom: 5px;">Crypto Investor & Strategic Researcher</p>
+            <p style="font-size: 13px; color: #888; margin-bottom: 10px;">Marketing | Bitcoiner | Front-end | Investor</p>
+            <ul>
+                <li>Third-Cycle Investor: Seasoned Bitcoin investor with deep insights into market cycles and long-term trends.</li>
+                <li>Disciplined DCA Strategy: Strict adherence to Dollar-Cost Averaging, focusing on sustainable portfolio growth.</li>
+            </ul>
+        </div>
+
+        <div>
+            <div class="section-title">Tech Stack</div>
+            <div class="info-row"><span class="info-label">Platforms</span><span class="info-value">Vercel, Netlify, Firebase</span></div>
+            <div class="info-row"><span class="info-label">Languages</span><span class="info-value">HTML5, CSS3, JavaScript (ES6+)</span></div>
+            <div class="info-row"><span class="info-label">Tools</span><span class="info-value"> Git, VS Code, Vite, npm/yarn</span></div>
+
+            <div class="section-title">Languages Spoken</div>
+            <div class="info-row"><span class="info-label">English</span><span class="info-value">B2 - Conversational / Active Learner</span></div>
+            <div class="info-row"><span class="info-label">Thai</span><span class="info-value">C1 - Fluent / Written: Basic</span></div>
+            <div class="info-row"><span class="info-label">Lao</span><span class="info-value">Native / Professional</span></div>
+
+            <div class="section-title">Profile Traits</div>
+            <div class="profile-grid">
+                <div>Creative</div>
+                <div>Innovator</div>
+                <div>Team work</div>
+                <div>Problem Solver</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

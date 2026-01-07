@@ -1,0 +1,20 @@
+h1::after {
+            content: ''; 
+            position: absolute;
+            /* ປັບຕຳແໜ່ງ: ຍັບລົງລຸ່ມ ແລະ ຍັບອອກໄປທາງຂວາ */
+            bottom: -10px; 
+            right: -25px; /* ໃຊ້ຄ່າລົບເພື່ອໃຫ້ມັນອອກໄປທາງຂວາຂອງໂຕ H */
+            
+            /* ປັບຂະໜາດໃຫ້ພໍດີກັບ Icon ເມົ້າ */
+            width: 25px; 
+            height: 25px;
+            
+            background-image: url('https://e7.pngegg.com/pngimages/111/409/png-clipart-computer-mouse-pointer-arrow-cursor-computer-mouse-angle-electronics-thumbnail.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            
+            /* ປ່ຽນມາໃຊ້ dark-color filter ເພາະຮູບທີ່ເລືອກມາໃໝ່ເປັນ PNG ໃສ */
+            filter: brightness(0) invert(1); /* ເຮັດໃຫ້ເມົ້າເປັນສີຂາວໃຫ້ເຂົ້າກັບ Theme */
+            
+            pointer-events: none;
+        }
