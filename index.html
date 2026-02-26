@@ -4,34 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>XAIYAVANH - Resume</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=JetBrains+Mono:wght@300;500&display=swap" rel="stylesheet">
     <style>
+        :root {
+            /* ປ່ຽນເປັນສີມ່ວງ Neon Sci-Fi */
+            --neon-purple: #bc13fe;
+            --neon-pink: #ff00ff;
+            --neon-glow: rgba(188, 19, 254, 0.5);
+            --bg-dark: #08020a;
+        }
+
         body {
-            background-color: #0a0a0a;
+            background-color: var(--bg-dark);
+            /* ພື້ນຫຼັງ Grid ແບບສີມ່ວງອ່ອນໆ */
+            background-image: 
+                linear-gradient(rgba(188, 19, 254, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(188, 19, 254, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
             color: #ffffff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'JetBrains Mono', monospace;
             margin: 0;
             padding: 40px;
             display: flex;
             justify-content: center;
             position: relative;
             cursor: default;
+            overflow-x: hidden;
+        }
+
+        /* Scanlines Effect (ເສັ້ນແລ່ນຜ່ານຈໍແບບ Retro-Future) */
+        body::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 255, 0.03), rgba(0, 255, 255, 0.01), rgba(188, 19, 254, 0.03));
+            z-index: 100;
+            background-size: 100% 4px, 3px 100%;
+            pointer-events: none;
         }
 
         .container {
             max-width: 800px;
             width: 100%;
+            background: rgba(15, 5, 20, 0.85);
+            padding: 30px;
+            border: 1px solid rgba(188, 19, 254, 0.3);
+            box-shadow: 0 0 35px rgba(0, 0, 0, 0.9), inset 0 0 15px rgba(188, 19, 254, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
         }
 
-        /* --- ເພີ່ມ Effect ໃຫ້ທຸກຕົວໜັງສື --- */
+        /* ມຸມຕົບແຕ່ງສີມ່ວງ */
+        .container::after {
+            content: "";
+            position: absolute;
+            top: -2px; right: -2px;
+            border-top: 15px solid var(--neon-purple);
+            border-right: 15px solid var(--neon-purple);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 80% 100%, 80% 20%, 0 20%);
+        }
+
         p, li, span, div, h1 {
-            transition: all 0.3s ease; /* ໃຫ້ແສງຄ່ອຍໆແຈ້ງຂຶ້ນ */
+            transition: all 0.3s ease;
         }
 
-        /* ເວລາ Hover ໃຫ້ມີແສງ Glow */
         p:hover, li:hover, span:hover, .summary-box div:hover {
-            color: #ffffff;
-            text-shadow: 0 0 8px rgba(247, 147, 26, 0.8);
-            transform: translateX(5px); /* ຍັບໄປທາງຂວານິດໜຶ່ງໃຫ້ເບິ່ງມີມິຕິ */
+            color: var(--neon-purple);
+            text-shadow: 0 0 15px var(--neon-purple);
+            transform: translateX(10px);
         }
 
         .header {
@@ -39,79 +81,73 @@
             gap: 30px;
             align-items: flex-start;
             margin-bottom: 30px;
+            border-bottom: 1px solid rgba(188, 19, 254, 0.2);
+            padding-bottom: 20px;
         }
 
+        /* ແກ້ໄຂຮູບມົວ: ເອົາ Filter ໝຸນສີອອກ */
         .profile-img {
             width: 180px;
             height: 220px;
             object-fit: cover;
-            border: 1px solid #333;
-            transition: 0.5s;
+            border: 2px solid var(--neon-purple);
+            filter: brightness(1.1) contrast(1.1); 
+            clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
         }
 
         .profile-img:hover {
-            border-color: #f7931a;
-            box-shadow: 0 0 20px rgba(247, 147, 26, 0.4);
+            filter: brightness(1.2);
+            box-shadow: 0 0 30px var(--neon-glow);
         }
 
         .summary-box {
-            color: #cccccc;
-            font-family: monospace;
-            line-height: 1.6;
-            font-size: 14px;
+            color: #a8a;
+            font-size: 13px;
+            border-left: 2px solid var(--neon-purple);
+            padding-left: 15px;
         }
 
         h1 {
-            font-size: 36px;
-            margin: 0 0 15px 0;
-            font-weight: bold;
-            letter-spacing: 2px;
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(247, 147, 26, 0.8);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 42px;
+            margin: 0 0 10px 0;
+            color: #fff;
+            text-shadow: 0 0 10px var(--neon-purple), 0 0 20px rgba(188, 19, 254, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 4px;
             position: relative;
-            display: inline-block;
         }
 
-        /* ໂຕ Mouse Cursor ທຽມ */
         h1::after {
             content: ''; 
             position: absolute;
             bottom: -10px; 
-            right: 40px; 
+            right: -25px; 
             width: 25px; 
             height: 25px;
-            background-image: url('https://www.pngmart.com/files/3/Cursor-Arrow-PNG-Transparent-Image.png');
+            background-image: url('https://e7.pngegg.com/pngimages/111/409/png-clipart-computer-mouse-pointer-arrow-cursor-computer-mouse-angle-electronics-thumbnail.png');
             background-size: contain;
             background-repeat: no-repeat;
-            filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(247, 147, 26, 1));
-            pointer-events: none;
-            z-index: 10;
+            filter: brightness(0) invert(1) drop-shadow(0 0 5px var(--neon-purple));
             animation: mouseBounce 2s infinite;
+            pointer-events: none;
         }
 
         @keyframes mouseBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+            0%, 100% { transform: translateY(0) rotate(-10deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
         }
 
         .section-title {
-            color: #ffffff;
-            font-size: 16px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #333;
-            padding-bottom: 5px;
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-purple);
+            font-size: 14px;
+            border-bottom: 1px solid rgba(188, 19, 254, 0.3);
+            background: linear-gradient(90deg, rgba(188, 19, 254, 0.15), transparent);
+            padding: 8px 10px;
             margin-top: 30px;
-        }
-
-        /* ເຮັດໃຫ້ Section Title ເດັ່ນຂຶ້ນເວລາ Hover */
-        .section-title:hover {
-            color: #f7931a;
-            border-bottom: 1px solid #f7931a;
-            padding-left: 10px;
-            text-shadow: 0 0 15px rgba(247, 147, 26, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .grid-container {
@@ -122,63 +158,83 @@
 
         .info-row {
             display: flex;
-            margin-bottom: 8px;
-            font-size: 14px;
+            margin-bottom: 10px;
         }
 
         .info-label {
             width: 140px;
-            color: #888;
+            color: var(--neon-purple);
+            font-weight: bold;
+            font-size: 11px;
+            text-transform: uppercase;
+            opacity: 0.9;
         }
 
         .info-value {
             color: #eee;
+            font-size: 13px;
         }
 
-        ul {
-            padding-left: 20px;
-            margin: 5px 0;
+        /* CSS ເພີ່ມເຕີມເພື່ອໃຫ້ Link ເບິ່ງງາມ */
+        .info-value a {
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        .info-value a:hover {
+            color: var(--neon-purple);
+            text-shadow: 0 0 10px var(--neon-purple);
         }
 
         li {
-            color: #bbb;
-            font-size: 14px;
-            margin-bottom: 8px;
+            color: #ccb;
+            list-style: none;
+            margin-bottom: 10px;
+            position: relative;
         }
 
-        .profile-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            color: #bbb;
-            font-size: 14px;
+        li::before {
+            content: "✦";
+            color: var(--neon-purple);
+            font-size: 12px;
+            margin-right: 8px;
         }
 
         .profile-grid div {
-            padding: 5px;
-            border: 1px solid transparent;
+            padding: 8px;
+            border: 1px solid rgba(188, 19, 254, 0.2);
+            background: rgba(188, 19, 254, 0.05);
+            text-align: center;
+            font-size: 12px;
         }
 
         .profile-grid div:hover {
-            background: rgba(247, 147, 26, 0.1);
-            border: 1px solid #f7931a;
+            background: var(--neon-purple);
             color: #fff;
-            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 0 15px var(--neon-purple);
         }
 
+        @keyframes glitch {
+            0% { text-shadow: 2.5px 0 #ff00ff; }
+            50% { text-shadow: -2.5px 0 #00f3ff; }
+            100% { text-shadow: 2.5px 0 #ff00ff; }
+        }
+        h1:hover {
+            animation: glitch 0.2s infinite;
+        }
     </style>
 </head>
 <body>
-
 <div class="container">
     <div class="header">
-        <img src="https://media-bkk1-1.cdn.whatsapp.net/v/t61.24694-24/509179534_1445069339955608_1672076963970717411_n.jpg?ccb=11-4&oh=01_Q5Aa3gG5sfJUPXPUCs8heL0ZQPnBK39LtuXXLqgCwd9aZqpeyQ&oe=6969C278&_nc_sid=5e03e0&_nc_cat=107" alt="Profile" class="profile-img">
+        <img src="https://scontent.fvte1-2.fna.fbcdn.net/v/t39.30808-6/397436066_1026182712000419_688088891492505726_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=1d70fc&_nc_aid=0&_nc_eui2=AeFkhM98afd4LueGUesJb3brhfyP2VoaX6CF_I_ZWhpfoF4qXCsSgSCPRIWRVo-9VrYCKtPtdCGQsQoc6kDgcCX-&_nc_ohc=gCmFSZfjnW4Q7kNvwEv_89F&_nc_oc=Adk5OUDXNU6DialKkBZwKQ6kNHas7ETp3v2-wt4J1EAz7Q5njxt7Pndh6nbhaClgMBs&_nc_zt=23&_nc_ht=scontent.fvte1-2.fna&_nc_gid=vhxxXSfQwEA351tWLwy-iw&oh=00_Afub1GDQZosziVxy_bBW_G6N2YxbScZ3seG2iScXL15npA&oe=69A625BE" alt="Profile" class="profile-img">
         
         <div class="header-text-container">
             <h1>XAIYAVANH</h1>
             <div class="summary-box">
                 <div>// &lt;summary&gt;</div>
-                <div>// Government Marketing Expert,</div>
+                <div>// Marketing Expert,</div>
                 <div>// Front-End Developer,</div>
                 <div>// Third-Cycle Bitcoin Investor,</div>
                 <div>// Technical White Paper Analyst,</div>
@@ -189,10 +245,23 @@
     </div>
 
     <div class="section-title">Personal Information</div>
-    <div style="margin-bottom: 30px;">
+    <div style="margin-bottom: 30px; padding: 15px;">
         <div class="info-row"><span class="info-label">Role</span><span class="info-value">Bitcoiner | Front-end Developer | Strategic Researcher</span></div>
-        <div class="info-row"><span class="info-label">Email</span><span class="info-value">jamesBorn1100@gmail.com</span></div>
-        <div class="info-row"><span class="info-label">Phone</span><span class="info-value">+856 20 5608 4393</span></div>
+        
+        <div class="info-row">
+            <span class="info-label">Email</span>
+            <span class="info-value">
+                <a href="mailto:jamesBorn1100@gmail.com">jamesBorn1100@gmail.com</a>
+            </span>
+        </div>
+        
+        <div class="info-row">
+            <span class="info-label">Phone</span>
+            <span class="info-value">
+                <a href="tel:+8562056084393">+856 20 5608 4393</a>
+            </span>
+        </div>
+        
         <div class="info-row"><span class="info-label">Location</span><span class="info-value">"Private"</span></div>
         <div class="info-row"><span class="info-label">Age</span><span class="info-value">23</span></div>
         <div class="info-row"><span class="info-label">Vehicle License</span><span class="info-value">true</span></div>
@@ -201,31 +270,30 @@
     <div class="grid-container">
         <div>
             <div class="section-title">Education</div>
-            <p style="font-size: 14px; margin-bottom: 5px;">High School Diploma | Autonomous Learner</p>
-            <p style="font-size: 13px; color: #888;">Sisattanak High-School<br>2021</p>
-
+            <p style="font-size: 14px; margin-bottom: 5px; color: #fff;">High School Diploma | Autonomous Learner</p>
+            <p style="font-size: 13px; color: #a8a;">Sisattanak High-School<br>2021</p>
+            
             <div class="section-title">Experience</div>
-            <p style="font-weight: bold; margin-bottom: 5px;">Crypto Investor & Strategic Researcher</p>
-            <p style="font-size: 13px; color: #888; margin-bottom: 10px;">Marketing | Bitcoiner | Front-end | Investor</p>
+            <p style="font-weight: bold; margin-bottom: 5px; color: var(--neon-purple);">Crypto Investor & Strategic Researcher</p>
+            <p style="font-size: 12px; color: #a8a; margin-bottom: 10px; font-style: italic;">Marketing | Bitcoiner | Front-end | Investor</p>
             <ul>
                 <li>Third-Cycle Investor: Seasoned Bitcoin investor with deep insights into market cycles and long-term trends.</li>
                 <li>Disciplined DCA Strategy: Strict adherence to Dollar-Cost Averaging, focusing on sustainable portfolio growth.</li>
             </ul>
         </div>
-
         <div>
             <div class="section-title">Tech Stack</div>
             <div class="info-row"><span class="info-label">Platforms</span><span class="info-value">Vercel, Netlify, Firebase</span></div>
             <div class="info-row"><span class="info-label">Languages</span><span class="info-value">HTML5, CSS3, JavaScript (ES6+)</span></div>
             <div class="info-row"><span class="info-label">Tools</span><span class="info-value"> Git, VS Code, Vite, npm/yarn</span></div>
-
+            
             <div class="section-title">Languages Spoken</div>
-            <div class="info-row"><span class="info-label">English</span><span class="info-value">B2 - Conversational / Active Learner</span></div>
+            <div class="info-row"><span class="info-label">English</span><span class="info-value">B2 - Conversational</span></div>
             <div class="info-row"><span class="info-label">Thai</span><span class="info-value">C1 - Fluent / Written: Basic</span></div>
             <div class="info-row"><span class="info-label">Lao</span><span class="info-value">Native / Professional</span></div>
-
+            
             <div class="section-title">Profile Traits</div>
-            <div class="profile-grid">
+            <div class="profile-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
                 <div>Creative</div>
                 <div>Innovator</div>
                 <div>Team work</div>
@@ -234,6 +302,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>
