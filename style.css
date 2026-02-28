@@ -3,7 +3,7 @@
     --neon-pink: #ff00ff;
     --neon-cyan: #00f3ff;
     --neon-green: #39ff14;
-    --lightning-color: #00ffff; /* ສີເຫຼືອງສາຍຟ້າ */
+    --lightning-color: #00ffff; 
     --bg-dark: #020105;
 }
 
@@ -18,7 +18,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Galaxy Background Elements */
+
 .stars, .twinkling, .dust { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
 .stars { background: transparent url('http://www.script-tutorials.com/demos/360/images/stars.png') repeat; }
 .twinkling { background: transparent url('http://www.script-tutorials.com/demos/360/images/twinkling.png') repeat; animation: move-twink 200s linear infinite; }
@@ -39,7 +39,7 @@ body {
     box-shadow: 0 0 50px rgba(0,0,0,1);
 }
 
-/* --- [1] ເອຟເຟັກຂອບໂປຟາຍໄຫຼ --- */
+
 .profile-border {
     position: relative;
     width: 160px;
@@ -47,11 +47,11 @@ body {
     background: rgba(0,0,0,0.3);
     border-radius: 5px;
     overflow: hidden;
-    padding: 3px; /* ໄລຍະຫ່າງເພື່ອໃຫ້ເຫັນຂອບໄຫຼ */
+    padding: 3px; 
     clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
 }
 
-/* Layer ທີ່ສ້າງຂອບໄຫຼ */
+
 .profile-border::before {
     content: '';
     position: absolute;
@@ -67,7 +67,7 @@ body {
     100% { transform: rotate(1turn); }
 }
 
-/* ຮູບໂປຟາຍ */
+
 .profile-img {
     width: 100%;
     height: 100%;
@@ -78,7 +78,7 @@ body {
     border: 1px solid rgba(188, 19, 254, 0.5);
 }
 
-/* --- [2] XAIYAVANH ໂຕໜັງສືສາຍຟ້າ --- */
+
 .lightning-text {
     font-family: 'Orbitron', sans-serif;
     font-size: 35px;
@@ -90,7 +90,7 @@ body {
     animation: electric-glitch 5s infinite;
 }
 
-/* ເພີ່ມ Layer ສາຍຟ້າໄຫຼ */
+
 .lightning-text::before {
     content: attr(data-text);
     position: absolute;
@@ -100,12 +100,12 @@ body {
     height: 100%;
     color: var(--lightning-color);
     -webkit-text-stroke: 0px;
-    clip-path: inset(0 100% 0 0); /* ເລີ່ມຕົ້ນຫາຍໄປ */
+    clip-path: inset(0 100% 0 0); 
     animation: lightning-strike 5s infinite;
     z-index: 1;
 }
 
-/* ເອຟເຟັກສາຍຟ້າໄຫຼ */
+
 @keyframes lightning-strike {
     0% { clip-path: inset(0 100% 0 0); }
     10% { clip-path: inset(0 0 0 0); opacity: 1; text-shadow: 0 0 20px var(--lightning-color), 0 0 30px var(--neon-cyan); }
@@ -118,7 +118,7 @@ body {
     100% { clip-path: inset(0 100% 0 0); }
 }
 
-/* ເອຟເຟັກ Glitch ກະພິບ */
+
 @keyframes electric-glitch {
     0%, 90%, 100% { text-shadow: 0 0 10px var(--lightning-color), 0 0 20px var(--neon-cyan); }
     92% { transform: skewX(-10deg); text-shadow: 0 0 30px var(--neon-cyan); }
@@ -126,13 +126,13 @@ body {
     96% { transform: skewY(5deg); text-shadow: 0 0 20px var(--lightning-color); }
 }
 
-/* Typing Reset Effect ທຸກໆ 10 ວິນາທີ */
+
 .typing-container { overflow: hidden; position: relative; }
 .typing-text { white-space: nowrap; border-right: 3px solid var(--neon-cyan); width: 0; animation: typing-loop 10s steps(45, end) infinite; }
 
 @keyframes typing-loop { 0% { width: 0; } 30%, 90% { width: 100%; } 100% { width: 0; } }
 
-/* Contact Links (Email ສີຂຽວ) */
+
 .contact-link { text-decoration: none; font-weight: bold; transition: 0.3s; }
 .email-green { color: var(--neon-green) !important; text-shadow: 0 0 8px rgba(57, 255, 20, 0.4); }
 .email-green:hover { text-shadow: 0 0 15px var(--neon-green); letter-spacing: 0.5px; }
@@ -142,7 +142,7 @@ body {
 .blink { animation: blinker 1s linear infinite; }
 @keyframes blinker { 50% { opacity: 0; } }
 
-/* Typography & Layout Elements */
+
 .header { display: flex; gap: 20px; border-bottom: 1px solid rgba(188,19,254,0.3); padding-bottom: 20px; flex-wrap: wrap; }
 
 .summary-box { background: rgba(0,0,0,0.3); padding: 15px; border-left: 3px solid var(--neon-purple); font-size: 12px; margin-top: 10px; width: 100%; }
@@ -154,7 +154,7 @@ body {
 
 .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
 
-/* Responsive Mobile */
+
 @media (max-width: 600px) {
     .grid-container { grid-template-columns: 1fr; }
     .header { justify-content: center; text-align: center; flex-direction: column; align-items: center; }
@@ -170,3 +170,4 @@ body {
 .profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
 .profile-grid div { border: 1px solid var(--neon-purple); padding: 8px; text-align: center; font-size: 10px; background: rgba(188,19,254,0.1); }
 .profile-grid div:hover { background: var(--neon-purple); color: white; box-shadow: 0 0 15px var(--neon-purple); }
+
