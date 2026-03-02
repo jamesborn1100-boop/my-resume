@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button id="gyro-btn" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; padding: 10px; background: var(--neon-purple); color: white; border: none; border-radius: 5px; cursor: pointer; font-family: 'Orbitron', sans-serif; font-size: 10px; box-shadow: 0 0 10px var(--neon-purple);">ENABLE GYRO</button>
+    <button id="gyro-btn" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; padding: 10px; background: var(--neon-purple); color: white; border: none; border-radius: 5px; cursor: pointer; font-family: 'Orbitron', sans-serif; font-size: 10px; box-shadow: 0 0 10px var(--neon-purple);">ENABLE GYRO 360°</button>
 
     <div class="stars"></div>
     <div class="twinkling"></div>
@@ -89,7 +89,6 @@
 
     <script>
         const btn = document.getElementById('gyro-btn');
-        
         btn.addEventListener('click', function() {
             if (typeof DeviceOrientationEvent.requestPermission === 'function') {
                 DeviceOrientationEvent.requestPermission()
@@ -108,10 +107,13 @@
 
         function initGyro() {
             window.addEventListener('deviceorientation', (e) => {
-                // ໃຊ້ alpha ເພື່ອໝູນ 360 ອົງສາຕາມເຂັມທິດ
-                const angle = e.alpha;
-                if (angle !== null) {
-                    document.documentElement.style.setProperty('--gyro-angle', angle + 'deg');
+                // ຄຳນວນຫາອົງສາການໝູນແບບຮອບທິດ ໂດຍໃຊ້ Beta ແລະ Gamma
+                let x = e.beta; 
+                let y = e.gamma;
+                let rotation = Math.atan2(y, x) * (180 / Math.PI);
+                
+                if (rotation !== null) {
+                    document.documentElement.style.setProperty('--gyro-angle', (rotation * -1) + 'deg');
                 }
             });
         }
