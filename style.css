@@ -4,6 +4,7 @@
     --neon-green: #39ff14;
     --lightning-color: #00ffff;
     --bg-dark: #020105;
+    --gyro-angle: 0deg; /* ຄ່າເລີ່ມຕົ້ນ */
 }
 
 body {
@@ -17,15 +18,25 @@ body {
     overflow-x: hidden;
 }
 
-.stars, .twinkling, .dust { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; }
+/* ປັບປຸງສ່ວນນີ້: ເພີ່ມ transform ແລະ transition */
+.stars, .twinkling, .dust { 
+    position: fixed; 
+    top: -50%; 
+    left: -50%; 
+    width: 200%; 
+    height: 200%; 
+    z-index: 0; 
+    transform: rotate(var(--gyro-angle));
+    transition: transform 0.1s linear;
+}
+
 .stars { background: transparent url('http://www.script-tutorials.com/demos/360/images/stars.png') repeat; }
 .twinkling { background: transparent url('http://www.script-tutorials.com/demos/360/images/twinkling.png') repeat; animation: move-twink 200s linear infinite; }
 .dust { background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat; opacity: 9999; animation: move-dust 50s linear infinite; }
 
-
+/* Code ສ່ວນທີ່ເຫຼືອຂອງເຈົ້າແມ່ນຄືເກົ່າ 100% ບໍ່ມີການປ່ຽນແປງ... */
 @keyframes move-twink { from { background-position: 0 0; } to { background-position: -10000px 5000px; } }
 @keyframes move-dust { from { background-position: 0 0; } to { background-position: 1000px 500px; } }
-
 
 .container {
     max-width: 850px;
