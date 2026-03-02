@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <button id="gyro-btn" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; padding: 10px; background: var(--neon-purple); color: white; border: none; border-radius: 5px; cursor: pointer; font-family: 'Orbitron', sans-serif; font-size: 10px; box-shadow: 0 0 10px var(--neon-purple);">ENABLE GYRO</button>
+
     <div class="stars"></div>
     <div class="twinkling"></div>
     <div class="dust"></div>
@@ -84,5 +86,35 @@
             </div>
         </div>
     </div>
+
+    <script>
+        const btn = document.getElementById('gyro-btn');
+        
+        btn.addEventListener('click', function() {
+            if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+                DeviceOrientationEvent.requestPermission()
+                    .then(state => {
+                        if (state === 'granted') {
+                            initGyro();
+                            btn.style.display = 'none';
+                        }
+                    })
+                    .catch(console.error);
+            } else {
+                initGyro();
+                btn.style.display = 'none';
+            }
+        });
+
+        function initGyro() {
+            window.addEventListener('deviceorientation', (e) => {
+                // ໃຊ້ alpha ເພື່ອໝູນ 360 ອົງສາຕາມເຂັມທິດ
+                const angle = e.alpha;
+                if (angle !== null) {
+                    document.documentElement.style.setProperty('--gyro-angle', angle + 'deg');
+                }
+            });
+        }
+    </script>
 </body>
 </html>
