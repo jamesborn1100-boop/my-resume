@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <button id="gyro-btn" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; padding: 10px; background: var(--neon-purple); color: white; border: none; border-radius: 5px; cursor: pointer; font-family: 'Orbitron', sans-serif; font-size: 10px; box-shadow: 0 0 10px var(--neon-purple);">ENABLE GYRO 360°</button>
+    <div class="main-bg"></div>
+
+    <button id="gyro-btn" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999; padding: 10px; background: var(--neon-purple); color: white; border: none; border-radius: 5px; cursor: pointer; font-family: 'Orbitron', sans-serif; font-size: 10px; box-shadow: 0 0 10px var(--neon-purple);">ENABLE PANNING</button>
 
     <div class="stars"></div>
     <div class="twinkling"></div>
@@ -94,26 +96,29 @@
                 DeviceOrientationEvent.requestPermission()
                     .then(state => {
                         if (state === 'granted') {
-                            initGyro();
+                            initPanning();
                             btn.style.display = 'none';
                         }
                     })
                     .catch(console.error);
             } else {
-                initGyro();
+                initPanning();
                 btn.style.display = 'none';
             }
         });
 
-        function initGyro() {
+        function initPanning() {
             window.addEventListener('deviceorientation', (e) => {
-                // ຄຳນວນຫາອົງສາການໝູນແບບຮອບທິດ ໂດຍໃຊ້ Beta ແລະ Gamma
-                let x = e.beta; 
-                let y = e.gamma;
-                let rotation = Math.atan2(y, x) * (180 / Math.PI);
+                let gamma = e.gamma; // ການງ່ຽງ ຊ້າຍ-ຂວາ (-90 ຫາ 90)
+                let beta = e.beta;   // ການງ່ຽງ ໜ້າ-ຫຼັງ (-180 ຫາ 180)
                 
-                if (rotation !== null) {
-                    document.documentElement.style.setProperty('--gyro-angle', (rotation * -1) + 'deg');
+                if (gamma !== null && beta !== null) {
+                    // ເລື່ອນຮູບພື້ນຫຼັງຕາມການງ່ຽງ
+                    let moveX = gamma * 4; // ປັບຄວາມໄວການເລື່ອນຊ້າຍຂວາ
+                    let moveY = (beta - 45) * 4; // ປັບຄວາມໄວການເລື່ອນຂຶ້ນລົງ (ລົບ 45 ເພື່ອໃຫ້ມັນຢູ່ກາງເວລາຖືປົກກະຕິ)
+                    
+                    document.documentElement.style.setProperty('--panning-x', moveX + 'px');
+                    document.documentElement.style.setProperty('--panning-y', moveY + 'px');
                 }
             });
         }
